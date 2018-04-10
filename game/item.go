@@ -5,6 +5,7 @@ type Item struct {
 	NameArticle string
 	Type        ItemType
 	Durability  int
+	ExamineText string
 }
 
 type ItemType int32
