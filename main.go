@@ -17,7 +17,7 @@ func main() {
 	fmt.Printf("Tell me, stranger, what is your %s?\n", colours.Variable("name"))
 	name := game.GetInput()
 
-	fmt.Printf("Okay %s, we need to get out of here now.", name)
+	fmt.Printf("Okay %s, we need to get out of here now.\n", colours.Variable(name))
 }
 
 func initGame() {

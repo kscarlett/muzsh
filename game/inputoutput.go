@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/kscarlett/muzsh/colours"
 )
@@ -20,11 +21,14 @@ func GetInput() string {
 
 	text, err := reader.ReadString('\n')
 	if err != nil {
-		return text
-	} else {
-		log.Panic(err)
+		log.Panic(err.Error())
 		return ""
 	}
+
+	text = strings.Replace(text, "\n", "", -1)
+	text = strings.Replace(text, "\r", "", -1)
+
+	return text
 }
 
 func GetCommand() (intent string, target string) {
