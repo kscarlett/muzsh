@@ -37,7 +37,31 @@ func GetInput() string {
 func GetCommand() (intent string, target string) {
 	printPrompt()
 
-	return "", ""
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		log.Panic(err.Error())
+		return "", ""
+	}
+
+	text = strings.Replace(text, "\n", "", -1)
+	text = strings.Replace(text, "\r", "", -1)
+	text = strings.ToLower(text)
+	words := strings.Split(text, " ")
+
+	if len(words) < 1 {
+		log.Panic("No command given")
+		return "", ""
+	}
+
+	intent = words[0]
+
+	if len(words) == 1 {
+		return intent, ""
+	}
+
+	target = strings.Join(words[1:], " ")
+
+	return
 }
 
 func printPrompt() {

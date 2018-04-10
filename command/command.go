@@ -14,9 +14,9 @@ type Command interface {
 }
 
 // HandleCommand calls a command function associated with the given name
-func HandleCommand(cmd string) {
+func HandleCommand(cmd, target string) {
 	if selected := commands[cmd]; selected == nil {
-		fmt.Printf("You don't know how to %s", colours.Action(selected))
+		fmt.Printf("You don't know how to %s!\n", colours.Action(selected))
 	} else {
 		selected.Excecute()
 	}
