@@ -5,6 +5,11 @@ import (
 
 	"github.com/kscarlett/muzsh/colours"
 	"github.com/kscarlett/muzsh/game"
+	"github.com/kscarlett/muzsh/player"
+)
+
+var (
+	p *player.Player
 )
 
 func main() {
@@ -15,11 +20,12 @@ func main() {
 	fmt.Printf("The %s are approaching!\n", colours.Zombie("zombie hordes"))
 
 	fmt.Printf("Tell me, stranger, what is your %s?\n", colours.Variable("name"))
-	name := game.GetInput()
+	p.Name = game.GetInput()
 
-	fmt.Printf("Okay %s, we need to get out of here now.\n", colours.Variable(name))
+	fmt.Printf("Okay %s, we need to get out of here now.\n", colours.Variable(p.Name))
 }
 
 func initGame() {
 	game.SetupInput()
+	p = player.NewPlayer()
 }
