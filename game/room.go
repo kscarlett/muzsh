@@ -22,6 +22,7 @@ type RoomLinks struct {
 	West  *Room
 }
 
+// InspectRoom prints the properties of the room (visual text, items, links)
 func (r *Room) InspectRoom() {
 	fmt.Printf("You look around %s.\n", colours.Location(r.Name))
 

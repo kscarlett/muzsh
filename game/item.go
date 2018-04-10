@@ -1,5 +1,6 @@
 package game
 
+// Item defines an interactable item inside the game world
 type Item struct {
 	Name        string
 	NameArticle string
@@ -8,6 +9,7 @@ type Item struct {
 	ExamineText string
 }
 
+// ItemType defines an enum which defines the shared properties of an item
 type ItemType int32
 
 const (

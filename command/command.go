@@ -8,10 +8,12 @@ import (
 
 var commands map[string]Command
 
+// Command provides an interface for commands
 type Command interface {
 	Excecute()
 }
 
+// HandleCommand calls a command function associated with the given name
 func HandleCommand(cmd string) {
 	if selected := commands[cmd]; selected == nil {
 		fmt.Printf("You don't know how to %s", colours.Action(selected))
@@ -20,6 +22,7 @@ func HandleCommand(cmd string) {
 	}
 }
 
+// RegisterCommand registers a command to the commands map
 func RegisterCommand(name string, cmd Command) {
 	// not sure if this will work well
 	commands[name] = cmd

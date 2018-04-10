@@ -12,10 +12,12 @@ import (
 
 var reader *bufio.Reader
 
+// SetupInput assigns a new buffer reader for all input
 func SetupInput() {
 	reader = bufio.NewReader(os.Stdin)
 }
 
+// GetInput reads in a single string from the command line and retruns it
 func GetInput() string {
 	printPrompt()
 
@@ -31,6 +33,7 @@ func GetInput() string {
 	return text
 }
 
+// GetCommand reads in a string from the command line and attempts to split it into intent (a command) and the target (location, item, enemy, etc), which it then returns
 func GetCommand() (intent string, target string) {
 	printPrompt()
 

@@ -8,8 +8,10 @@ import (
 	"github.com/kscarlett/muzsh/global"
 )
 
+// StatusCommand provides the type for the command to be called
 type StatusCommand struct{}
 
+// Execute fulfills the command interface for the command pattern
 func (s *StatusCommand) Execute() {
 	printStatus(global.Player)
 }
