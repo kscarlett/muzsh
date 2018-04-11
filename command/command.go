@@ -16,7 +16,7 @@ type Command interface {
 // HandleCommand calls a command function associated with the given name
 func HandleCommand(cmd, target string) {
 	if selected := commands[cmd]; selected == nil {
-		fmt.Fprintf(colours.StdOut, "You don't know how to %s!\n", colours.Action(selected))
+		fmt.Fprintf(colours.StdOut, "You don't know how to %s!\n", colours.Action(cmd))
 	} else {
 		selected.Excecute()
 	}
