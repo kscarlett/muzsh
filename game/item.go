@@ -14,10 +14,10 @@ type ItemType int32
 
 const (
 	Useless ItemType = iota
-	MeleeWeapon
-	RangedWeapon
-	Food
-	Drink
-	Medical
-	Poison
+	MeleeWeapon ItemType = iota
+	RangedWeapon ItemType = iota
+	Food ItemType = iota
+	Drink ItemType = iota
+	Medical ItemType = iota
+	Poison ItemType = iota
 )

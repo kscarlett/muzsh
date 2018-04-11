@@ -38,6 +38,11 @@ func (r *Room) InspectRoom() {
 	r.printRoomLinks()
 }
 
+// PrintRoomVisual prints the visual text of the room
+func (r *Room) PrintRoomVisual() {
+	fmt.Fprintf(colours.StdOut, "%s\n", r.Visual)
+}
+
 func (r *Room) printRoomItems() {
 	fmt.Fprintf(colours.StdOut, "You also see ")
 

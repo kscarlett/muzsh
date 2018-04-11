@@ -14,9 +14,7 @@ func main() {
 	initGame()
 	var intent, target string
 
-	fmt.Fprintf(colours.StdOut, "Welcome to %s\n%s\n",
-		colours.Zombie("MUZSH"),
-		colours.Zombie("[¬º-°]¬    [¬°-º]¬ [¬º-°]¬  [¬°-°]¬"))
+	printBanner()
 
 	fmt.Fprintf(colours.StdOut, "The %s are approaching!\n",
 		colours.Zombie("zombie hordes"))
@@ -35,5 +33,25 @@ func main() {
 
 func initGame() {
 	game.SetupInput()
+	command.PremapAll()
 	session.Player = player.NewPlayer()
+	session.World, session.Player.CurrentRoom = game.NewWorld()
+}
+
+func printBanner() {
+	fmt.Fprintf(colours.StdOut,
+		"\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\n\t%s\n\t%s\n\n",
+		colours.ZombieEx("                    Welcome  to                    "),
+		colours.Zombie("@@@@@@@@@@   @@@  @@@  @@@@@@@@   @@@@@@   @@@  @@@"),
+		colours.Zombie("@@@@@@@@@@@  @@@  @@@  @@@@@@@@  @@@@@@@   @@@  @@@"),
+		colours.Zombie("@@! @@! @@!  @@!  @@@       @@!  !@@       @@!  @@@"),
+		colours.Zombie("!@! !@! !@!  !@!  @!@      !@!   !@!       !@!  @!@"),
+		colours.Zombie("@!! !!@ @!@  @!@  !@!     @!!    !!@@!!    @!@!@!@!"),
+		colours.Zombie("!@!   ! !@!  !@!  !!!    !!!      !!@!!!   !!!@!!!!"),
+		colours.Zombie("!!:     !!:  !!:  !!!   !!:           !:!  !!:  !!!"),
+		colours.Zombie(":!:     :!:  :!:  !:!  :!:           !:!   :!:  !:!"),
+		colours.Zombie(":::     ::   ::::: ::   :: ::::  :::: ::   ::   :::"),
+		colours.Zombie(" :      :     : :  :   : :: : :  :: : :     :   : :"),
+		colours.Zombie("[¬º-°]¬    [¬°-º]¬ [¬º-°]¬  [¬°-°]¬ [¬°-º]¬ [¬º-°]¬"),
+		colours.ZombieEx("muzsh.kscarlett.com           Kellen Scarlett, 2018"))
 }

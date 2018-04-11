@@ -7,10 +7,11 @@ import (
 )
 
 var commands map[string]Command
+var aliases map[string]string
 
 // Command provides an interface for commands
 type Command interface {
-	Excecute()
+	Execute(name, target string)
 }
 
 // HandleCommand calls a command function associated with the given name
@@ -18,7 +19,7 @@ func HandleCommand(cmd, target string) {
 	if selected := commands[cmd]; selected == nil {
 		fmt.Fprintf(colours.StdOut, "You don't know how to %s!\n", colours.Action(cmd))
 	} else {
-		selected.Excecute()
+		selected.Execute(cmd, target)
 	}
 }
 
@@ -26,4 +27,33 @@ func HandleCommand(cmd, target string) {
 func RegisterCommand(name string, cmd Command) {
 	// not sure if this will work well
 	commands[name] = cmd
+}
+
+// PremapAll maps a set of built-in commands to their canonical names without having to call RegisterCommand on them all individually
+func PremapAll() {
+	premapCommands()
+	premapAliases()
+}
+
+func premapCommands() {
+	commands = map[string]Command{
+		"status": &StatusCommand{},
+		"take": &TakeCommand{},
+		"go": &GoCommand{},
+		"north": &GoCommand{},
+		"east": &GoCommand{},
+		"south": &GoCommand{},
+		"west": &GoCommand{},
+		"use": &UseCommand{},
+		"eat": &UseCommand{},
+		"drink": &UseCommand{},
+		"shoot": &UseCommand{},
+		"hit": &UseCommand{},
+	}
+}
+
+func premapAliases() {
+	aliases = map[string]string{
+		"grab": "take",
+	}
 }

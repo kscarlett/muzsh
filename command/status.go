@@ -8,16 +8,18 @@ import (
 	"github.com/kscarlett/muzsh/session"
 )
 
+// TODO: should this be aliased to inspect self?
+
 // StatusCommand provides the type for the command to be called
 type StatusCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
-func (s *StatusCommand) Execute() {
+func (s *StatusCommand) Execute(name, target string) {
 	printStatus(session.Player)
 }
 
 func printStatus(p *player.Player) {
-	fmt.Fprintf(colours.StdOut, "You are %s. You are also %s and %s",
+	fmt.Fprintf(colours.StdOut, "You are %s. You are also %s and %s.\n",
 		colours.Health(healthString(p)),
 		colours.Hunger(hungerString(p)),
 		colours.Thirst(thirstString(p)))

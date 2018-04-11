@@ -11,6 +11,7 @@ var (
 	Location = color.New(color.FgHiYellow).SprintFunc()
 	Item     = color.New(color.FgCyan).SprintFunc()
 	Zombie   = color.New(color.FgGreen).SprintFunc()
+	ZombieEx = color.New(color.FgHiGreen).SprintFunc()
 	Variable = color.New(color.FgMagenta).Add(color.Underline).SprintFunc()
 	Prompt   = color.New(color.FgMagenta).SprintFunc()
 	Health   = color.New(color.FgRed).Add(color.Italic).SprintFunc()
