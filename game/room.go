@@ -12,6 +12,7 @@ type Room struct {
 	Visual     string
 	Contents   []Item
 	Neighbours RoomLinks
+	// Maybe add special room hazards and events
 }
 
 // RoomLinks define the connections between different rooms.
@@ -47,11 +48,11 @@ func (r *Room) printRoomItems() {
 	fmt.Fprintf(colours.StdOut, "You also see ")
 
 	for i, item := range r.Contents {
-		fmt.Fprintf(colours.StdOut, "%s %s", colours.Item(item.NameArticle), colours.Item(item.Name))
-
-		if i < len(r.Contents) {
+		if i < 0 {
 			fmt.Fprintf(colours.StdOut, ", ")
 		}
+
+		fmt.Fprintf(colours.StdOut, "%s %s", colours.Item(item.NameArticle), colours.Item(item.Name))
 	}
 
 	fmt.Fprintf(colours.StdOut, ".\n")

@@ -8,8 +8,6 @@ import (
 	"github.com/kscarlett/muzsh/session"
 )
 
-// TODO: should this be aliased to inspect self?
-
 // StatusCommand provides the type for the command to be called
 type StatusCommand struct{}
 

@@ -20,13 +20,10 @@ func (t *TakeCommand) Execute(name, target string) {
 }
 
 func take(p *player.Player, target string) {
-	fmt.Fprintf(colours.StdOut, "%s\n", colours.Zombie("test"))
-
 	var targetItem *game.Item
-	target = strings.ToLower(target)
 	
 	for _, item := range p.CurrentRoom.Contents {
-		if strings.ToLower(item.Name) == target {
+		if strings.ToLower(item.Name) == target || strings.ToLower(item.NameArticle + " " + item.Name) == target {
 			targetItem = &item
 			break
 		}
@@ -45,7 +42,7 @@ func take(p *player.Player, target string) {
 	p.CurrentRoom.Contents = util.RemoveItem(p.CurrentRoom.Contents, targetItem)
 
 	fmt.Fprintf(colours.StdOut,
-		"You have taken %s %s and safely put it in your inventory",
+		"You have taken %s %s and safely put it in your inventory.\n",
 		colours.Item(targetItem.NameArticle),
 		colours.Item(targetItem.Name))
 }

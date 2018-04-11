@@ -17,6 +17,7 @@ type Command interface {
 // HandleCommand calls a command function associated with the given name
 func HandleCommand(cmd, target string) {
 	if selected := commands[cmd]; selected == nil {
+		// TODO: handle aliases as well
 		fmt.Fprintf(colours.StdOut, "You don't know how to %s!\n", colours.Action(cmd))
 	} else {
 		selected.Execute(cmd, target)
@@ -39,6 +40,7 @@ func premapCommands() {
 	commands = map[string]Command{
 		"status": &StatusCommand{},
 		"take": &TakeCommand{},
+		"drop": &DropCommand{},
 		"go": &GoCommand{},
 		"north": &GoCommand{},
 		"east": &GoCommand{},
@@ -49,6 +51,8 @@ func premapCommands() {
 		"drink": &UseCommand{},
 		"shoot": &UseCommand{},
 		"hit": &UseCommand{},
+		"inventory": &InventoryCommand{},
+		"inspect": &InspectCommand{},
 	}
 }
 

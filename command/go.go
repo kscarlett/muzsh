@@ -47,6 +47,10 @@ func goTo(p *player.Player, target, command string) {
 	case strings.Contains(target, "west"):
 		ok = tryGoToRoom(p, 3)
 		target = "West"
+	default:
+		fmt.Fprintf(colours.StdOut, "%s is not a valid direction!\n",
+			colours.Variable(strings.ToTitle(target)))
+		return
 	}
 
 	if !ok {

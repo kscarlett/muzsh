@@ -20,6 +20,7 @@ func (t *UseCommand) Execute(name, target string) {
 func use(p *player.Player, action, target string) {
 	fmt.Fprintf(colours.StdOut, "%s\n", colours.Zombie("test"))
 
+	// TODO: implement
 	switch {
 	case strings.Contains(action, "eat"):
 		// if target item != itemType.Food || itemType.Medical
