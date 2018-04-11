@@ -65,5 +65,6 @@ func GetCommand() (intent string, target string) {
 }
 
 func printPrompt() {
-	fmt.Printf("%s", colours.Prompt("> "))
+	// BUG: prompt doesn't show on Windows Powershell
+	fmt.Fprintf(colours.StdOut, "%s", colours.Prompt("> "))
 }

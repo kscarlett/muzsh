@@ -17,7 +17,7 @@ func (s *StatusCommand) Execute() {
 }
 
 func printStatus(p *player.Player) {
-	fmt.Printf("You are %s. You are also %s and %s",
+	fmt.Fprintf(colours.StdOut, "You are %s. You are also %s and %s",
 		colours.Health(healthString(p)),
 		colours.Hunger(hungerString(p)),
 		colours.Thirst(thirstString(p)))
