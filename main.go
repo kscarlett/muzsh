@@ -6,8 +6,8 @@ import (
 	"github.com/kscarlett/muzsh/colours"
 	"github.com/kscarlett/muzsh/command"
 	"github.com/kscarlett/muzsh/game"
-	"github.com/kscarlett/muzsh/global"
 	"github.com/kscarlett/muzsh/player"
+	"github.com/kscarlett/muzsh/session"
 )
 
 func main() {
@@ -23,10 +23,10 @@ func main() {
 
 	fmt.Fprintf(colours.StdOut, "Tell me, stranger, what is your %s?\n",
 		colours.Variable("name"))
-	global.Player.Name = game.GetInput()
+	session.Player.Name = game.GetInput()
 
 	fmt.Fprintf(colours.StdOut, "Okay %s, we need to get out of here now.\n",
-		colours.Variable(global.Player.Name))
+		colours.Variable(session.Player.Name))
 
 	for intent, target = game.GetCommand(); intent != "quit"; intent, target = game.GetCommand() {
 		command.HandleCommand(intent, target)
@@ -35,5 +35,5 @@ func main() {
 
 func initGame() {
 	game.SetupInput()
-	global.Player = player.NewPlayer()
+	session.Player = player.NewPlayer()
 }

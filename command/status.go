@@ -5,7 +5,7 @@ import (
 
 	"github.com/kscarlett/muzsh/colours"
 	"github.com/kscarlett/muzsh/player"
-	"github.com/kscarlett/muzsh/global"
+	"github.com/kscarlett/muzsh/session"
 )
 
 // StatusCommand provides the type for the command to be called
@@ -13,7 +13,7 @@ type StatusCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (s *StatusCommand) Execute() {
-	printStatus(global.Player)
+	printStatus(session.Player)
 }
 
 func printStatus(p *player.Player) {

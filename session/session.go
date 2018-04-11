@@ -1,4 +1,4 @@
-package global
+package session
 
 import (
 	"github.com/kscarlett/muzsh/player"
