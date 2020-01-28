@@ -10,6 +10,8 @@ import (
 	"github.com/kscarlett/muzsh/colours"
 )
 
+// TODO: replace with a proper parser.
+
 var reader *bufio.Reader
 
 // SetupInput assigns a new buffer reader for all input

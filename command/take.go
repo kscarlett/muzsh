@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/kscarlett/muzsh/colours"
+	"github.com/kscarlett/muzsh/item"
 	"github.com/kscarlett/muzsh/player"
 	"github.com/kscarlett/muzsh/session"
-	"github.com/kscarlett/muzsh/game"
 	"github.com/kscarlett/muzsh/util"
 )
 
@@ -20,10 +20,10 @@ func (t *TakeCommand) Execute(name, target string) {
 }
 
 func take(p *player.Player, target string) {
-	var targetItem *game.Item
-	
+	var targetItem *item.Item
+
 	for _, item := range p.CurrentRoom.Contents {
-		if strings.ToLower(item.Name) == target || strings.ToLower(item.NameArticle + " " + item.Name) == target {
+		if strings.ToLower(item.Name) == target || strings.ToLower(item.NameArticle+" "+item.Name) == target {
 			targetItem = &item
 			break
 		}
@@ -46,4 +46,3 @@ func take(p *player.Player, target string) {
 		colours.Item(targetItem.NameArticle),
 		colours.Item(targetItem.Name))
 }
-

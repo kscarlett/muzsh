@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/kscarlett/muzsh/colours"
+	"github.com/kscarlett/muzsh/item"
 	"github.com/kscarlett/muzsh/player"
 	"github.com/kscarlett/muzsh/session"
-	"github.com/kscarlett/muzsh/game"
 	"github.com/kscarlett/muzsh/util"
 )
 
@@ -20,10 +20,10 @@ func (t *DropCommand) Execute(cmd, target string) {
 }
 
 func drop(p *player.Player, target string) {
-	var targetItem *game.Item
-	
+	var targetItem *item.Item
+
 	for _, item := range p.Inventory.Items {
-		if strings.ToLower(item.Name) == target || strings.ToLower(item.NameArticle + " " + item.Name) == target {
+		if strings.ToLower(item.Name) == target || strings.ToLower(item.NameArticle+" "+item.Name) == target {
 			targetItem = &item
 			break
 		}

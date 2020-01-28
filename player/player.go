@@ -8,6 +8,8 @@ import (
 type Player struct {
 	Name        string
 	Health      int
+	Fear        int
+	Money       int
 	Hunger      int
 	Thirst      int
 	Inventory   *Inventory
@@ -17,8 +19,10 @@ type Player struct {
 // NewPlayer returns a new Player with an empty inventory and full health, hunger and thirst.
 func NewPlayer() *Player {
 	return &Player{
-		Health: 100,
-		Hunger: 100,
-		Thirst: 100,
+		Health:    100,
+		Fear:      10,
+		Money:     0,
+		Hunger:    100,
+		Thirst:    100,
 		Inventory: newInventory()}
 }

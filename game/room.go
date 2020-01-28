@@ -4,13 +4,15 @@ import (
 	"fmt"
 
 	"github.com/kscarlett/muzsh/colours"
+	"github.com/kscarlett/muzsh/item"
+	"github.com/kscarlett/muzsh/util"
 )
 
 // Room defines a room in the game, along with its contents.
 type Room struct {
 	Name       string
 	Visual     string
-	Contents   []Item
+	Contents   []item.Item
 	Neighbours RoomLinks
 	// Maybe add special room hazards and events
 }
@@ -25,7 +27,8 @@ type RoomLinks struct {
 
 // InspectRoom prints the properties of the room (visual text, items, links)
 func (r *Room) InspectRoom() {
-	fmt.Fprintf(colours.StdOut, "You look around %s.\n",
+	fmt.Fprintf(colours.StdOut, "You %s %s.\n",
+		util.RandomString([]string{"look around", "inspect", "scan", "search"}),
 		colours.Location(r.Name))
 
 	fmt.Fprintf(colours.StdOut, "%s\n", r.Visual)
@@ -33,7 +36,7 @@ func (r *Room) InspectRoom() {
 	if len(r.Contents) > 0 {
 		r.printRoomItems()
 	} else {
-		fmt.Fprintf(colours.StdOut, "There is nothing you can pick up here.\n")
+		fmt.Fprintf(colours.StdOut, "%s\n", util.RandomString([]string{"There is nothing you can pick up here.", "This place has been looted long ago.", "There's nothing that can be of use to you here."}))
 	}
 
 	r.printRoomLinks()
