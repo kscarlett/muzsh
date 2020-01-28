@@ -14,7 +14,7 @@ type UseCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (t *UseCommand) Execute(name, target string) {
-	use(session.Player, name, target)
+	use(session.Data.Player, name, target)
 }
 
 func use(p *player.Player, action, target string) {

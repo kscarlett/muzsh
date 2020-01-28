@@ -14,7 +14,7 @@ type InspectCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (t *InspectCommand) Execute(cmd, target string) {
-	inspect(session.Player, cmd, target)
+	inspect(session.Data.Player, cmd, target)
 }
 
 func inspect(p *player.Player, command, target string) {
@@ -32,10 +32,10 @@ func inspect(p *player.Player, command, target string) {
 	// TODO: implement
 
 	// Check for player name last, in case the player gives themself the same name as an item
-	if strings.Contains(target, "self") || strings.Contains(target,strings.ToLower(p.Name)) {
-			HandleCommand("status", "")
-			return
-		}
+	if strings.Contains(target, "self") || strings.Contains(target, strings.ToLower(p.Name)) {
+		HandleCommand("status", "")
+		return
+	}
 
 	// else error
 

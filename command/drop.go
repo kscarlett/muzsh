@@ -16,7 +16,7 @@ type DropCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (t *DropCommand) Execute(cmd, target string) {
-	drop(session.Player, target)
+	drop(session.Data.Player, target)
 }
 
 func drop(p *player.Player, target string) {

@@ -16,7 +16,7 @@ type TakeCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (t *TakeCommand) Execute(name, target string) {
-	take(session.Player, target)
+	take(session.Data.Player, target)
 }
 
 func take(p *player.Player, target string) {

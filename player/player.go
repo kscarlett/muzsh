@@ -16,8 +16,8 @@ type Player struct {
 	CurrentRoom *game.Room
 }
 
-// NewPlayer returns a new Player with an empty inventory and full health, hunger and thirst.
-func NewPlayer() *Player {
+// New returns a new Player with an empty inventory and full health, hunger and thirst.
+func New() *Player {
 	return &Player{
 		Health:    100,
 		Fear:      10,

@@ -2,13 +2,13 @@ package command
 
 import (
 	"fmt"
-	"strings"
 	"log"
+	"strings"
 
 	"github.com/kscarlett/muzsh/colours"
+	"github.com/kscarlett/muzsh/game"
 	"github.com/kscarlett/muzsh/player"
 	"github.com/kscarlett/muzsh/session"
-	"github.com/kscarlett/muzsh/game"
 )
 
 // GoCommand provides the type for the command to be called
@@ -16,7 +16,7 @@ type GoCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (t *GoCommand) Execute(name, target string) {
-	goTo(session.Player, target, name)
+	goTo(session.Data.Player, target, name)
 }
 
 func goTo(p *player.Player, target, command string) {
@@ -61,7 +61,7 @@ func goTo(p *player.Player, target, command string) {
 
 func tryGoToRoom(p *player.Player, direction int) bool {
 	var targetRoom *game.Room
-	
+
 	switch direction {
 	case 0:
 		targetRoom = p.CurrentRoom.Neighbours.North
@@ -82,6 +82,6 @@ func tryGoToRoom(p *player.Player, direction int) bool {
 		p.CurrentRoom.PrintRoomVisual()
 		return true
 	}
-	
+
 	return false
 }

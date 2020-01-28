@@ -13,7 +13,7 @@ type StatusCommand struct{}
 
 // Execute fulfills the command interface for the command pattern
 func (s *StatusCommand) Execute(name, target string) {
-	printStatus(session.Player)
+	printStatus(session.Data.Player)
 }
 
 func printStatus(p *player.Player) {

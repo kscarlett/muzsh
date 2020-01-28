@@ -9,12 +9,13 @@ import (
 
 // World holds the game world, which consists of multiple interconnected rooms
 type World struct {
-	Rooms []*Room
+	Rooms        []*Room
+	StartingRoom *Room
 }
 
-func NewWorld() (world *World, startingRoom *Room) {
-	startingRoom = &Room{Name: "the abandoned parking lot", Visual: "The large, open space is littered with empty, abandoned cars. They aren't of much use anymore.", Contents: []item.Item{}}
-	otherRoom := &Room{Name: "the shopping mall entrance",
+func NewWorld() *World {
+	parkingLot := &Room{Name: "the abandoned parking lot", Visual: "The large, open space is littered with empty, abandoned cars. They aren't of much use anymore.", Contents: []item.Item{}}
+	shoppingMallEntrance := &Room{Name: "the shopping mall entrance",
 		Visual: "Broken glass litters the entrance to the shopping mall. Thousands of people used to come here every day. Now you'll only find the walking dead or a bunch of looters if you're 'lucky' enough.",
 		Contents: []item.Item{item.Item{
 			NameArticle: "a",
@@ -23,8 +24,13 @@ func NewWorld() (world *World, startingRoom *Room) {
 			Durability:  1,
 			Type:        item.Food}}}
 
-	startingRoom.Neighbours.East = otherRoom
-	otherRoom.Neighbours.West = startingRoom
+	parkingLot.Neighbours.East = shoppingMallEntrance
+	shoppingMallEntrance.Neighbours.West = parkingLot
 
-	return &World{[]*Room{startingRoom, otherRoom}}, startingRoom
+	world := &World{
+		Rooms:        []*Room{parkingLot, shoppingMallEntrance},
+		StartingRoom: parkingLot,
+	}
+
+	return world
 }

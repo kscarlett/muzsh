@@ -1,11 +1,22 @@
 package session
 
 import (
-	"github.com/kscarlett/muzsh/player"
 	"github.com/kscarlett/muzsh/game"
+	"github.com/kscarlett/muzsh/player"
 )
 
 var (
-	Player *player.Player
-	World *game.World
+	Data *Session
 )
+
+type Session struct {
+	Player *player.Player
+	World  *game.World
+}
+
+func New() *Session {
+	return &Session{
+		Player: player.New(),
+		World:  game.NewWorld(),
+	}
+}
